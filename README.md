@@ -12,6 +12,8 @@ Feel free to request a file removal if necessary.
 
 # Links
 
+https://gitlab.com/tina5.0_aiot/product/docs/
+
 https://www.szlcsc.com/
 
 https://linux-sunxi.org/Main_Page
