@@ -1,0 +1,88 @@
+20241230：
+PAGE07
+1、RP296/RP297封装由0603改为0201。
+2、移除RP7，VCC33-18-USB只从ALDO1供3.3V，不需要3.3/1.8V兼容电阻。
+PAGE11
+1、移除VCC-PD的C11 10uF电容。
+PAGE12
+1、VDD-CPUL电容容值调整，C46由1uF调整为100nF。
+2、VDD-GPU电容容值调整，C263调整为0603 22uF，必须靠近SOC放置。
+PAGE15
+1、UFS-RST-N预留对地1nf电容位。
+其他：
+1、真闪LED供电输入增加VBAT-515供电路径。
+2、PA输出的串阻封装由0201改为0402。
+3、BCT4690E（BCT4480）的CC-IN管脚增加0R串阻，对于外挂CC芯片的应用，可以NC掉CC-IN信号，规避过孔上焊盘
+带来的PCB加价。
+4、修正部分RLC的BOM value。
+5、AXP515页，在VBUS-AXP515和VMID中增加1个SS24肖特基二极管，通流需求2A，压降小于0.5V。预留给AXP517 debug，AXP515不需要。
+
+20241222：
+PAGE07 
+1、增加 LDO2V5-INPUT输出电压以及分压电阻的注释，推荐DCDC输出2.25V电压，进一步提高LDO效率。
+2、增加AXP318 TS管脚0R电阻用于JITEA的注释。
+3、增加DCDC2的VDD-DRAM 0R串阻可删除的注释。
+PAGE08
+1、增加预留PCB板级NTC温度采集电路，AVCC上拉，GPADC4采集。
+2、AXP2601/2602 采样电阻封装换为1206。
+3、AXP515 BAT输出和VBAT中间增加0805 NC电阻位RP369，当使用AXP517时，RP246和RP369只贴0R，保证通流能力。
+PAGE10
+1、增加GPADC4连接。
+2、UFS HDMI 注释修改，当不使用模块时，电源不能悬空，信号可以悬空。
+PAGE12
+1、增加电容布局注释，CPUB CPUL SYS GPU电容均要靠近SOC放置。
+2、增加大电容放置需要靠近SOC的注释；增加CPUB/CPUL 底部推荐放置0402 10uF电容的注释。
+PAGE14
+1、增加DCDC的VBAT-515输入电流需求注释。
+PAGE15
+1、UFS-VCCQ增加两个0402 4.7uF电容位置，其中一个需要上件，预留给AUTOFAST模式开启后频繁轻重载切换改善电源质量。
+PAGE16
+1、修改NOTE1内容为：NC AC107，使用AC101B ADC*3，可支持MIC*2/ECM MIC*1。 NC AC107，使用AC101 ADC*2，可支持MIC*2。
+2、删除页面中出现的版权内容。
+PAGE19
+1、针对金属TF卡座，在DET管脚增加SD-DET串阻，同时SD-DET接到QC1 G极用于开电控制。
+PAGE30
+1、修正PCIE时钟发生器晶振VALUE值，改为25MHz。
+
+20241215：
+1、刷新元器件命名。
+2、刷新PAGE12345页信息。
+3、刷新各PAGE title信息。
+4、整理元器件value信息。
+
+20241210：
+PAGE08
+1、修正RP301 RP301接线错误，交换SCK SDA。
+2、增加AXP2601/2602外挂电量计，用于适配(EU) 2023/1670协议要求。当使用外挂电量计时，电池负极网络由GND改为VBAT-GND，先经过电量计的采样电阻再接到GND。
+3、RP271 RP272上拉改为VCC-PL。
+4、增加OVP使用注释。
+5、删除AXP515 VSYS输出电感的1uH-3A信息。
+
+PAGE10
+1、DDR PARA参数序号重排，起始由0改为由1开始。
+2、C0201 4.7uF电容封装改为C0402，PCB上放TOP面靠近SOC放置。
+3、删除combo模块附近重复的描述。
+4、UFS/HDMI供电描述修改，如果这两个模块不使用，对于的0.8V/1.8V供电需要提供，避免漏电。
+
+PAGE11
+1、PH0/PH1增加0R串阻，用于跳选单MIPI/双MIPI的的TP TWI信号选择。
+2、PL12增加对AXP519页的off-page。
+3、删除PB9/PB10多余的CC TWI网络。
+
+PAGE12
+1、晶振默认使用26M，其他晶振规格删除。
+
+PAGE17
+1、修正UA1 UA2 UA3 UA4的C1/A1管脚极性和座子不对应，交换SPK+/-线序。
+2、删除RA90 RA91，删除VCC-PH的上拉；AMP TWI修改到PB GPIO，上拉到VCC-IO
+
+PAGE19
+1、SDC0增加0R串阻，用于调节排线卡座的SI问题；PCB直连卡座可以costdown。
+
+PAGE20
+1、增加TYPEC SIGNAL SWITCH带高压防护器件，用于高压充、快充的TYPEC口 SBU DPDM耐压防护。
+
+OPTION页：
+PAGE 08 Quick Charger_2S lion
+1、增加电量计GND1网络和电池负极的连接关系。
+2、修正器件位号，统一为RP前缀。
